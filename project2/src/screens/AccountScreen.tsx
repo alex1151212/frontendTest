@@ -114,17 +114,6 @@ export default function AccountScreen() {
         <Grid item xs={10}>
           <AppBar position="static">
             <Toolbar>
-              <IconButton
-                edge="start"
-                color="inherit"
-                aria-label="menu"
-                onClick={() => {
-                  setMenu(!menu);
-                  console.log(menu);
-                }}
-              >
-                <MenuIcon />
-              </IconButton>
               <Typography variant="h6" className="flexgrow">
                 管理系統
               </Typography>
