@@ -118,7 +118,7 @@ function TablePaginationActions(props: TablePaginationActionsProps) {
   );
 }
 
-export default function Tabletest(props: Props) {
+export default function TableBar(props: Props) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -144,7 +144,7 @@ export default function Tabletest(props: Props) {
 
   useEffect(() => {
     const a = data.datas.filter((item) => {
-      let iskeyword: boolean = false;
+      let isKeyword = false;
       if (
         item.type.includes(keyword) ||
         item.msgContent.includes(keyword) ||
@@ -152,13 +152,13 @@ export default function Tabletest(props: Props) {
         item.range.includes(keyword) ||
         item.time.includes(keyword)
       )
-        iskeyword = true;
+        isKeyword = true;
 
       if (
         (item.type === type || type === '全部') &&
         Date.parse(item.time) > Date.parse(rangePicker[0]) &&
         Date.parse(item.time) < Date.parse(rangePicker[1]) &&
-        iskeyword
+        isKeyword
       )
         return item;
     });

@@ -1,26 +1,21 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
-import SigninScreen from './screens/SigninScreen';
-import ManagerScreen from './screens/ManagerScreen';
-import DashboardScreen from './screens/DashboardScreen';
-import AccountScreen from './screens/AccountScreen';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import ManagerLayout from './components/ManagerLayout';
 import './index.sass';
-import { Store } from './Store';
+import AccountScreen from './screens/AccountScreen';
+import DashboardScreen from './screens/DashboardScreen';
+import ManagerScreen from './screens/ManagerScreen';
+import SigninScreen from './screens/SigninScreen';
 
 function App() {
-  const ctxContext = useContext(Store);
-  if (!ctxContext) return null;
-  const { state, dispatch: ctxDispatch } = ctxContext;
-
-  const { userInfo } = state;
-
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<SigninScreen />}></Route>
-        <Route path="/manager" element={<ManagerScreen />}></Route>
-        <Route path="/dashboard" element={<DashboardScreen />}></Route>
-        <Route path="/account" element={<AccountScreen />}></Route>
+        <Route element={<ManagerLayout />}>
+          <Route path="/manager" element={<ManagerScreen />} />
+          <Route path="/dashboard" element={<DashboardScreen />} />
+          <Route path="/account" element={<AccountScreen />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
